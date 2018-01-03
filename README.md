@@ -6,21 +6,21 @@ signing personal certificates of attendance, writing a letter to multiple person
 
 Requirements
 ------------
-This program depends on ´PyPDF2´, ´reportlab´ and ´argparse´. You can install them as follows using [pip](https://pip.pypa.io/en/stable/installing/):
+This program depends on `PyPDF2`, `reportlab` and `argparse`. You can install them as follows using [pip](https://pip.pypa.io/en/stable/installing/):
 
-´´´
+```bash
 pip install PyPDF2
 pip install reportlab
 pip install argparse
-´´´ 
+``` 
 
 Usage & help
 ------------
 Please, refer to in-program help
 
-´´´
+```bash
 python pdfsign.py -h
-´´´
+```
 .
 
 Ideas & Suggestions
