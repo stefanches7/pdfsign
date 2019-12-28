@@ -16,6 +16,9 @@ parser.add_argument('-posX', '--positionX', action='store', type=int, nargs=1, h
 parser.add_argument('-posY', '--positionY', action='store', type=int, nargs=1, help="Y-axis start position of the "
                                                                                     "future text "
                                                                           "frame. Measured in pixels.", required=True)
+parser.add_argument('-pl', '--padLine', action='store', type=int, nargs="?", help="Padding between the lines, substract from font size. Default 0.", default = 0, required=False)
+parser.add_argument('-ps', '--padSide', action='store', type=int, nargs="?", help="Padding of second line from the left border. Default is 40.", default = 40, required=False)
+
 parser.add_argument('-p', '--prefix', action='store', nargs='?', help="Prefix to add before each participant name", 
                     default="Dear",
                     required=False)
@@ -27,7 +30,7 @@ parser.add_argument('-botUp', '--bottomup', action='store',nargs="?", help="Spec
 parser.add_argument('-in', '--input', nargs="+", action='store', help="Specify the input. One argument here is "
                                                                       "treated as a relative path to the file "
                                                                       "containing the list of the text strings to "
-                                                                      "insert into your file, more than one - as "
+                                                                      "insert into your file. If arguments are however more than one string, they are treated as "
                                                                       "a list of strings themselves", required=True)
 parser.add_argument('-fS', '--fontSize', nargs="?", type=int, action='store', help="Specify the font size",
                     default=14, required=False)
@@ -50,6 +53,8 @@ bottomUp= settings.bottomup
 font = settings.font
 fontSize = settings.fontSize
 outputDir = settings.output
+pl = settings.padLine
+ps = settings.padSide
 
 participantNames = []
 if (len(settings.input)==1): #file with the list entered
@@ -70,12 +75,12 @@ for participantName in participantNames:
     draw.text((paddingX, paddingY), "{0} {1}".format(prefix, " ".join(participantName.split(" ")[0:2])), (col[0],col[1],col[2]),
      font=fontDrawer)
     #rest of the name
-    draw.text((paddingX + 40, paddingY + fontSize - 10), "{0}!".format(' '.join(participantName.split(" ")[2:])), (col[0],col[1],col[2]),
+    draw.text((paddingX + ps, paddingY + fontSize-pl), "{0}!".format(' '.join(participantName.split(" ")[2:])), (col[0],col[1],col[2]),
      font=fontDrawer)
   else:
     draw.text((paddingX, paddingY), "{0} {1}".format(prefix, participantName.split(" ")[0]), (col[0],col[1],col[2]),
      font=fontDrawer)
     #rest of the name
-    draw.text((paddingX + 40, paddingY + fontSize - 10), "{0}!".format(' '.join(participantName.split(" ")[1:])), (col[0],col[1],col[2]),
+    draw.text((paddingX + ps, paddingY + fontSize-pl), "{0}!".format(' '.join(participantName.split(" ")[1:])), (col[0],col[1],col[2]),
      font=fontDrawer)
   m.save("{3}/{0}_{1}.{2}".format(modelFile.split(".")[0], participantName.replace(" ", "_"), modelFile.split(".")[1], outputDir ))

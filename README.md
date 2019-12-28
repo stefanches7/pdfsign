@@ -16,13 +16,18 @@ pip install argparse
 
 Usage & help
 ------------
-Please, refer to in-program help
+pdfsign signs files in pdf format, imgsign in usual image formats (jpeg, png...).
+Refer to in-program help
 
 ```bash
 python pdfsign.py -h
+```
+or
+```bash
+python imgsign.py -h
 ```
 .
 
 Ideas & Suggestions
 -------------------
-are welcome! Write me a PM :)
+You are welcome to leave an issue!
