@@ -3,6 +3,8 @@ PdfSign and ImageSign
 
 Edit multiple PDFs / JPEG images at once. 
 
+[Demo](https://youtu.be/FruODB1gw_c)
+
 Use Cases
 -------
 - Personal **certificates of attendance**
