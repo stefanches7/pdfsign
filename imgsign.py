@@ -62,7 +62,7 @@ participantNames = []
 if (len(settings.input)==1): #file with the list entered
     with open(settings.input[0]) as names:
         participantNames = names.readlines()
-        participantNames = [x.strip() for x in participantNames]
+        participantNames = [x.strip("\r\n") for x in participantNames]
 else:
     participantNames = settings.input
 
@@ -77,12 +77,18 @@ for participantName in participantNames:
     draw.text((paddingX, paddingY), "{0} {1}".format(prefix, " ".join(participantName.split(" ")[0:2])), (col[0],col[1],col[2]),
      font=fontDrawer)
     #rest of the name
-    draw.text((paddingX + ps, paddingY + fontSize-pl), "{0}!".format(' '.join(participantName.split(" ")[2:])), (col[0],col[1],col[2]),
+    draw.text((paddingX + ps, paddingY + fontSize-pl), "{0},".format(' '.join(participantName.split(" ")[2:])), (col[0],col[1],col[2]),
      font=fontDrawer)
-  else:
-    draw.text((paddingX, paddingY), "{0} {1}".format(prefix, participantName.split(" ")[0]), (col[0],col[1],col[2]),
+  elif participantName.split(" ")[1:] == []: #single name only
+    draw.text((paddingX, paddingY), "{0} {1},".format(prefix, participantName.split(" ")[0]), (col[0],col[1],col[2]),
      font=fontDrawer)
     #rest of the name
-    draw.text((paddingX + ps, paddingY + fontSize-pl), "{0}!".format(' '.join(participantName.split(" ")[1:])), (col[0],col[1],col[2]),
+    draw.text((paddingX + ps, paddingY + fontSize-pl), "{0},".format(' '.join(participantName.split(" ")[1:])), (col[0],col[1],col[2]),
+     font=fontDrawer)
+  elif participantName.split(" ")[1:] != []: #single name only
+    draw.text((paddingX, paddingY), "{0} {1},".format(prefix, participantName.split(" ")[0]), (col[0],col[1],col[2]),
+     font=fontDrawer)
+    #rest of the name
+    draw.text((paddingX + ps, paddingY + fontSize-pl), "{0},".format(' '.join(participantName.split(" ")[1:])), (col[0],col[1],col[2]),
      font=fontDrawer)
   m.save("{3}/{0}_{1}.{2}".format(modelFile.stem, participantName.replace(" ", "_"), modelFile.suffix, outputDir ))
