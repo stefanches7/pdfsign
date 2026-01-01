@@ -3,7 +3,8 @@ PdfSign and ImageSign
 
 Edit multiple PDFs / JPEG images at once. 
 
-{% include youtube.html id="FruODB1gw_c" %}
+
+https://github.com/user-attachments/assets/4e598d4d-fde5-4d2a-95a5-d4d9fc9d4906
 
 
 Use Cases
