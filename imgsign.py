@@ -4,6 +4,8 @@ from PIL import ImageFont
 from PIL import ImageDraw 
 import os
 import re
+from pathlib import Path
+
 parser = ArgumentParser("Edits already existing pdf adding text at the specified position. Thought to be most "
                         "effective performing a massive uniform editing of more PDFs than one.")
 
@@ -48,11 +50,11 @@ prefix = settings.prefix
 col = settings.color
 paddingX = settings.positionX[0]
 paddingY = settings.positionY[0]
-modelFile = settings.model
+modelFile = Path(settings.model)  
 bottomUp= settings.bottomup
 font = settings.font
 fontSize = settings.fontSize
-outputDir = settings.output
+outputDir = Path(settings.output)
 pl = settings.padLine
 ps = settings.padSide
 
@@ -83,4 +85,4 @@ for participantName in participantNames:
     #rest of the name
     draw.text((paddingX + ps, paddingY + fontSize-pl), "{0}!".format(' '.join(participantName.split(" ")[1:])), (col[0],col[1],col[2]),
      font=fontDrawer)
-  m.save("{3}/{0}_{1}.{2}".format(modelFile.split(".")[0], participantName.replace(" ", "_"), modelFile.split(".")[1], outputDir ))
+  m.save("{3}/{0}_{1}.{2}".format(modelFile.stem, participantName.replace(" ", "_"), modelFile.suffix, outputDir ))
