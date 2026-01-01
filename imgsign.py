@@ -82,9 +82,6 @@ for participantName in participantNames:
   elif participantName.split(" ")[1:] == []: #single name only
     draw.text((paddingX, paddingY), "{0} {1},".format(prefix, participantName.split(" ")[0]), (col[0],col[1],col[2]),
      font=fontDrawer)
-    #rest of the name
-    draw.text((paddingX + ps, paddingY + fontSize-pl), "{0},".format(' '.join(participantName.split(" ")[1:])), (col[0],col[1],col[2]),
-     font=fontDrawer)
   elif participantName.split(" ")[1:] != []: #single name only
     draw.text((paddingX, paddingY), "{0} {1},".format(prefix, participantName.split(" ")[0]), (col[0],col[1],col[2]),
      font=fontDrawer)
